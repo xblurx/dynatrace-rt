@@ -1,0 +1,10 @@
+pnet_api:
+  username: 'api_send2'
+  password: 'Qwerty123!'
+  url: 'http://10.29.140.106:80/bppmws/api/Event/create?routingId=sks06sr001.ks.rt.ru&routingIdType=SERVER_NAME'
+
+skk_api:
+  login: 'key-astrom_login'
+  password: '1003pw'
+  url: 'http://10.28.88.16/FWS/canonical-informing-service/message/send'
+  recipient: ''

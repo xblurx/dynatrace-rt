@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-import yaml
 import base64
+import yaml
+import uuid
 import requests
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 
-with open("config/config.yaml") as fin:
+with open("./config.yaml") as fin:
     config = yaml.safe_load(fin)
 
 
@@ -35,5 +35,27 @@ def make_pnet_request(payload):
 
 
 def make_skk_request(payload):
-    # do something
-    pass
+    url = config["skk_api"]["url"]
+    login = config["skk_api"]["login"]
+    pw = config["skk_api"]["password"]
+    recipient = config["skk_api"]["recipient"]
+    msg_id = uuid.uuid1()
+
+    base64creds = base64.encodebytes(f"{login}:{pw}".encode()).decode().strip()
+    headers = {
+        "Authorization": f"basic {base64creds}",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Accept": "application/json",
+        "Accept-Charset": "UTF-8",
+    }
+
+    data = """{"external-id1":"kc","external-id3":"astrom", "messages":[{"recipient": f"{recipient}", "template-id":"1172","message-id":"123456789","variables":{"msgtxt": "Test"}}]}"""
+    try:
+        response = requests.post(
+            url,
+            headers=headers,
+            json=payload
+        )
+        return response.status_code
+    except Exception as e:
+        raise SystemExit(e)
