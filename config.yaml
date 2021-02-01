@@ -7,4 +7,3 @@ skk_api:
   login: 'key-astrom_login'
   password: '1003pw'
   url: 'http://10.28.88.16/FWS/canonical-informing-service/message/send'
-  recipient: ''

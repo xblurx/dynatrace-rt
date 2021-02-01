@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import base64
 import yaml
-import uuid
 import requests
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
