@@ -17,10 +17,10 @@ pnet_queue = Queue("pnet_queue", connection=redis)
 def webhook():
     try:
         print(request.data)
-        # skk_event = SKKEvent().make_event()
+        skk_event = SKKEvent().make_event()
         pnet_event = PnetEvent(request.data).make_event()
 
-        # skk_queue.enqueue(make_skk_request, skk_event)
+        skk_queue.enqueue(make_skk_request, skk_event)
         pnet_queue.enqueue(make_pnet_request, pnet_event)
     except AttributeError:
         return make_response("ERROR", 500)

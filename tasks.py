@@ -38,8 +38,6 @@ def make_skk_request(payload):
     url = config["skk_api"]["url"]
     login = config["skk_api"]["login"]
     pw = config["skk_api"]["password"]
-    recipient = config["skk_api"]["recipient"]
-    msg_id = uuid.uuid1()
 
     base64creds = base64.encodebytes(f"{login}:{pw}".encode()).decode().strip()
     headers = {
@@ -48,8 +46,6 @@ def make_skk_request(payload):
         "Accept": "application/json",
         "Accept-Charset": "UTF-8",
     }
-
-    data = """{"external-id1":"kc","external-id3":"astrom", "messages":[{"recipient": f"{recipient}", "template-id":"1172","message-id":"123456789","variables":{"msgtxt": "Test"}}]}"""
     try:
         response = requests.post(
             url,
