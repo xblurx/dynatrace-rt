@@ -13,10 +13,14 @@ skk_queue = Queue("skk_queue", connection=redis)
 pnet_queue = Queue("pnet_queue", connection=redis)
 
 
+@app.route("/webhook", methods=["GET"])
+def index():
+    return make_response("OK", 200)
+
+
 @app.route("/webhook", methods=["POST"])
 def webhook():
     try:
-        print(request.data)
         skk_event = SKKEvent().make_event()
         pnet_event = PnetEvent(request.data).make_event()
 
@@ -27,5 +31,5 @@ def webhook():
         return make_response("ERROR", 500)
 
 
-if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
+if __name__ == "__main__":
+    app.run(host="10.242.152.115", debug=True, use_reloader=True)
