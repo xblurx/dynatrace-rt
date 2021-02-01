@@ -7,8 +7,8 @@
 #### Install dependencies:
 `pip install -r requirements.txt`
 #### Collect dependencies in wheels folder:
-`pip wheel -r requirements.txt  --wheel-dir ./wheel`
-###To start webhook:
+`pip wheel -r requirements.txt  --wheel-dir ./wheel`  
+### To start webhook:
 #### Copy env flask app variable:
 `export FLASK_APP=~/webhook_listener.py`
 #### Run flask:  
