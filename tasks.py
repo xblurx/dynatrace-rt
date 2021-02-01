@@ -7,7 +7,7 @@ import requests
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 
-with open(".config/config.yaml") as fin:
+with open("config/config.yaml") as fin:
     config = yaml.safe_load(fin)
 
 

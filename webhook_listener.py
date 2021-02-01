@@ -24,3 +24,7 @@ def webhook():
         pnet_queue.enqueue(make_pnet_request, pnet_event)
     except AttributeError:
         return make_response("ERROR", 500)
+
+
+if __name__ == '__main__':
+    app.run(debug=True, use_reloader=True)
