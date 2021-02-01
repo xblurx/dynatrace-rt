@@ -13,5 +13,7 @@
 `export FLASK_APP=~/webhook_listener.py`
 #### Run flask:  
 `nohup flask run &`
+#### Run custom host/port:
+`nohup python3 webhook_listener.py &`
 
 
